@@ -1,5 +1,5 @@
 import express from "express";
-import { PrismaClient } from "C:/Users/profe/OneDrive/Desktop/docker-compose/src/generated/prisma";
+import { PrismaClient } from "@prisma/client";
 const app = express();
 app.use(express.json());
 const prismaClient = new PrismaClient();
