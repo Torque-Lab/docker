@@ -18,7 +18,7 @@
 -- start postgres - --docker run --network dbnetwork --name postgres -e POSTGRES_PASSWORD=mypassword123 -d -p 5432:5432 postgres
 
 - Build the image- `docker build --network=host -t webapp .`
--note her duying build time sever connect db at system localhost but aftr build in start phase , we have connect both container of server and db with network  because after buiild server also be in cotainer that will be will to connect system local host so url of db changes with postgres asusal 
+-note:her during build time sever connect to  db at system localhost so we during building connect on network of host, but aftr build, in start phase , we have to connect, both container of server and db with docker network  because after build server also be in cotainer and db be in seprate conatiner, so we connect them with docker network , because server inside cotainer not be able connect with system localhost
 - Start the image - `docker run -e DATABASE_URL="postgresql://postgres:mypassword123@postgres:5432/postgres" --network dbnetwork -d -p 3000:3000 webapp`
 
 ## Docker Compose installation steps
