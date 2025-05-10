@@ -1,0 +1,27 @@
+## we to get ride of all teadious previous like making network ,we use docker-compose
+
+
+version: '1.0'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=mypassword123
+
+  webapp:
+    build:
+      network: host
+      context: ./
+      dockerfile: Dockerfile
+      
+    environment:
+      - DATABASE_URL=postgresql://postgres:mypassword123@postgres:5432/postgres
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+
+
